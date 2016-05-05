@@ -1,0 +1,11 @@
+language: csharp
+solution: UnknownProject.sln
+install:
+  - nuget restore UnknownProject.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release UnknownProject.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./UnknownProject.Tests/bin/Release/UnknownProjectTests.dll
+branches:
+  only:
+    - master
