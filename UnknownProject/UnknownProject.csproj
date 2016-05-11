@@ -53,6 +53,7 @@
     <Compile Include="Components\ISetPresenter.cs" />
     <Compile Include="Components\IView.cs" />
     <Compile Include="Components\Miscellaneous\FPSCounterComponentView.cs" />
+    <Compile Include="Components\MonoGameSortingFilteringCollection.cs" />
     <Compile Include="Core\ApplicationSettings.cs" />
     <Compile Include="Components\Component.cs" />
     <Compile Include="Components\ComponentCollection.cs" />

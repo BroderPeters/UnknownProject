@@ -5,7 +5,10 @@ using System;
 
 namespace UnknownProject.Components
 {
-    public class Component : IGameComponent, IUpdateable
+    /// <summary>
+    /// The basic component.
+    /// </summary>
+    public abstract class Component : IGameComponent, IUpdateable
     {
         private bool _enabled = true;
         private int _updateOrder = 0;
@@ -37,7 +40,7 @@ namespace UnknownProject.Components
         public event EventHandler<EventArgs> EnabledChanged;
         public event EventHandler<EventArgs> UpdateOrderChanged;
         public virtual void Initialize() { }
-        public virtual void Update(GameTime gameTime) { }
+        public abstract void Update(GameTime gameTime);
         protected virtual void OnEnabledChanged(object sender, EventArgs args) { }
         protected virtual void OnUpdateOrderChanged(object sender, EventArgs args) { }
     }

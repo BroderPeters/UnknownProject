@@ -50,5 +50,7 @@ namespace UnknownProject.Components
         }
 
         public virtual void UnloadContent() { }
+
+        public virtual void Initialize() { }
     }
 }

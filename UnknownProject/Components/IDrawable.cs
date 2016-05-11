@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace UnknownProject.Components
 {
-    public interface IDrawable
+    public interface IDrawable : IGameComponent
     {
         int DrawOrder { get; }
         bool Visible { get; }
