@@ -46,24 +46,24 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Components\ComponentView.cs" />
-    <Compile Include="Components\DrawableComponent.cs" />
-    <Compile Include="Components\IHasDrawable.cs" />
-    <Compile Include="Components\IPresenter.cs" />
-    <Compile Include="Components\ISetPresenter.cs" />
-    <Compile Include="Components\IView.cs" />
+    <Compile Include="Components\Core\ComponentView.cs" />
+    <Compile Include="Components\Core\DrawableComponent.cs" />
+    <Compile Include="Components\Core\IHasDrawable.cs" />
+    <Compile Include="Components\Core\IPresenter.cs" />
+    <Compile Include="Components\Core\ISetPresenter.cs" />
+    <Compile Include="Components\Core\IView.cs" />
     <Compile Include="Components\Miscellaneous\FPSCounterComponentView.cs" />
     <Compile Include="Components\MonoGameSortingFilteringCollection.cs" />
     <Compile Include="Core\ApplicationSettings.cs" />
-    <Compile Include="Components\Component.cs" />
-    <Compile Include="Components\ComponentCollection.cs" />
-    <Compile Include="Components\ComponentPresenter.cs" />
-    <Compile Include="Components\IDrawable.cs" />
+    <Compile Include="Components\Core\Component.cs" />
+    <Compile Include="Components\Core\ComponentCollection.cs" />
+    <Compile Include="Components\Core\ComponentPresenter.cs" />
+    <Compile Include="Components\Core\IDrawable.cs" />
     <Compile Include="Components\Miscellaneous\FPSCounterComponent.cs" />
     <Compile Include="Core\GraphicConfiguration.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionContainer.cs" />
     <Compile Include="DependencyInjection\Singleton.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="UnknownProjectGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

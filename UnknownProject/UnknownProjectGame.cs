@@ -5,13 +5,14 @@ using UnknownProject.Components.Miscellaneous;
 using UnknownProject.Components;
 using UnknownProject.Core;
 using System;
+using UnknownProject.Components.Core;
 
 namespace UnknownProject
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class UnknownProjectGame : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -20,7 +21,7 @@ namespace UnknownProject
         ComponentCollection collection;
         private GraphicConfiguration graficConf;
 
-        public Game1(GraphicConfiguration graficConf, ComponentCollection collection, FPSCounterComponent fpsComponent) {
+        public UnknownProjectGame(GraphicConfiguration graficConf, ComponentCollection collection, FPSCounterComponent fpsComponent) {
             this.collection = collection;
             this.graficConf = graficConf;
             graphics = new GraphicsDeviceManager(this);

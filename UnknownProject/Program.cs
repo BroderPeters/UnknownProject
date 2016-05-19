@@ -17,7 +17,7 @@ namespace UnknownProject
             var container = DependencyInjectionContainer.Get();
             using (container.BeginScope())
             {
-                var game = container.GetInstance<Game1>();
+                var game = container.GetInstance<UnknownProjectGame>();
                 game.Run();
             }
         }

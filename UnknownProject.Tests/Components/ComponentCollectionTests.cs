@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using FakeItEasy;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using UnknownProject.Components.Core;
 
 namespace UnknownProject.Components.Tests
 {

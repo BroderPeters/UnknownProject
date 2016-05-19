@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnknownProject.Components
+namespace UnknownProject.Components.Core
 {
-    public interface ISetPresenter<T>
+    public interface IView<T> : IDrawable, ISetPresenter<T> where T : IPresenter 
     {
-        void SetPresenter(T presenter);
     }
 }

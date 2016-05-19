@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace UnknownProject.Components
+namespace UnknownProject.Components.Core
 {
     public abstract class DrawableComponent : Component, IDrawable
     {

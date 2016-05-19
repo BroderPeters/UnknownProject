@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 
 
-namespace UnknownProject.Components
+namespace UnknownProject.Components.Core
 {
     public abstract class ComponentPresenter : Component, IPresenter
     {

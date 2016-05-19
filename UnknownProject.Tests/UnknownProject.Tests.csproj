@@ -6,8 +6,8 @@
     <ProjectGuid>{EC8D7BF4-E75B-4528-B219-F02AB7B25D93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnknownProjectTests</RootNamespace>
-    <AssemblyName>UnknownProjectTests</AssemblyName>
+    <RootNamespace>UnknownProject.Tests</RootNamespace>
+    <AssemblyName>UnknownProject.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using UnknownProject.Core;
+using UnknownProject.Components.Core;
 
 namespace UnknownProject.Components.Miscellaneous
 {
@@ -59,7 +60,7 @@ namespace UnknownProject.Components.Miscellaneous
             return new Vector2(x, y);
         }
 
-        public override IDrawable AsDrawable()
+        public override Core.IDrawable AsDrawable()
         {
             return view;
         }

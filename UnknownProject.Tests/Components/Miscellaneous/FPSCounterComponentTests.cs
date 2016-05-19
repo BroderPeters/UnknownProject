@@ -10,7 +10,7 @@ using FakeItEasy;
 using Microsoft.Xna.Framework;
 using MonoGame.Framework;
 
-namespace UnknownProject.Component.Miscellaneous.Tests
+namespace UnknownProject.Components.Miscellaneous.Tests
 {
     [TestFixture()]
     public class FPSCounterComponentTests

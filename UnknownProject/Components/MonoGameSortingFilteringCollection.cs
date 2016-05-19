@@ -41,7 +41,7 @@ namespace UnknownProject.Components
             _removeJournal = new List<int>();
             _cachedFilteredItems = new List<T>();
             _shouldRebuildCache = true;
-
+            
             _filter = filter;
             _filterChangedSubscriber = filterChangedSubscriber;
             _filterChangedUnsubscriber = filterChangedUnsubscriber;
@@ -262,20 +262,20 @@ namespace UnknownProject.Components
             InvalidateCache();
         }
 
-        private struct AddJournalEntry<T>
+        private struct AddJournalEntry<U>
         {
             public readonly int Order;
-            public readonly T Item;
+            public readonly U Item;
 
-            public AddJournalEntry(int order, T item)
+            public AddJournalEntry(int order, U item)
             {
                 Order = order;
                 Item = item;
             }
 
-            public static AddJournalEntry<T> CreateKey(T item)
+            public static AddJournalEntry<U> CreateKey(U item)
             {
-                return new AddJournalEntry<T>(-1, item);
+                return new AddJournalEntry<U>(-1, item);
             }
 
             public override int GetHashCode()
@@ -285,10 +285,10 @@ namespace UnknownProject.Components
 
             public override bool Equals(object obj)
             {
-                if (!(obj is AddJournalEntry<T>))
+                if (!(obj is AddJournalEntry<U>))
                     return false;
 
-                return object.Equals(Item, ((AddJournalEntry<T>)obj).Item);
+                return object.Equals(Item, ((AddJournalEntry<U>)obj).Item);
             }
         }
     }

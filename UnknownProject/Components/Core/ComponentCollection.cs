@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework;
 using System.Collections;
 
-namespace UnknownProject.Components
+namespace UnknownProject.Components.Core
 {
     /// <summary>
     /// The Component Collection is for storing and grouping components, the collection itself is an component so it can be added to another collection
