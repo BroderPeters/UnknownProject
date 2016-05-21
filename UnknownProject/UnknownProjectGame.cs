@@ -6,6 +6,8 @@ using UnknownProject.Components;
 using UnknownProject.Core;
 using System;
 using UnknownProject.Components.Core;
+using UnknownProject.Content.Pipeline.Tiled;
+using System.Collections.Generic;
 
 namespace UnknownProject
 {
@@ -57,9 +59,13 @@ namespace UnknownProject
             graficConf.Width = GraphicsDevice.Viewport.Bounds.Width; 
             graficConf.Height = GraphicsDevice.Viewport.Bounds.Height;
 
+            TiledMap map = Content.Load<TiledMap>("desert");
+
             collection.LoadContent(Content);
             // TODO: use this.Content to load your game content here
         }
+
+      
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload

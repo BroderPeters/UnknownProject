@@ -86,9 +86,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <MonoGameContentReference Include="Content\Content.mgcb">
+      <SubType>Designer</SubType>
+    </MonoGameContentReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\UnknownProject.Content.Pipeline\UnknownProject.Content.Pipeline.csproj">
+      <Project>{35b4bb85-454e-4de4-9f41-5f081b438fc0}</Project>
+      <Name>UnknownProject.Content.Pipeline</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

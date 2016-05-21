@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="17">
+ <tileset firstgid="1" name="desert" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="48" columns="8">
+  <image source="F:/Program Files/Tiled/examples/tmw_desert_spacing.png" width="265" height="199"/>
+  <tile id="31">
+   <objectgroup draworder="index">
+    <object id="1" x="4.25" y="2.75" width="24" height="18.375">
+     <ellipse/>
+    </object>
+    <object id="4" x="14.375" y="21" width="12.625" height="9.5">
+     <ellipse/>
+    </object>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="49" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="48" columns="8">
+  <image source="F:/Program Files/Tiled/examples/tmw_desert_spacing.png" width="265" height="199"/>
+ </tileset>
+ <layer name="Ground" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OoQ0AIAwAsF3CD4BC8v9T7ACCJBMV9W0R0YrraaRZ4HKzChxedoEDAAAAAAD8dACPfHKTABkAAA==
+  </data>
+ </layer>
+ <layer name="mid" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC72YwY7DIAxEOffSX7D2kCv//3erSIvkujP2GNodKdokW5sXMMYwxr5+wsVkB20s+1MfkdXznvpGPqo+qeTto+9bzwPfvo1bD3ftyMY743N8htGrYlRi0SsyMruTcfQy509l9Yzf5uvocvfVWDO+k5irdIXnXb7MZyYj7+eGLxQnrO+uxlXxdRkVnY75rH8CxfjQNz7IpdhWfN+cq1nf2t9fhQ8xrjlu4H+nsqHz3WJ9GPPQbqws2Xhf27zPnXyMGE85vZYvP44xJtgYr3con89xxroYJmgfxW3kU9f1XU7fPmqnylndeT1Hj3W1z/qhw9epP25FvmxdUNdS1S6r25kYn2qP4l+1PdlbdGII1TPdGLTxub1Z9FPx3fcrrhgDe6/IxitXfFZqVs/I/DM7ha96X+2fFh9iRP4Xm1KDIftMWU5AjMh/XBMyIftMVS1b5WG0ZmUygclLqbUzRmV/4J/N3Xf26s/kyhjZHoYx23idq8uHF9qDsu9Qvs/7V+uHuD/3Pjr7J5YvWS6Zon+0jqF2kLJ6MFvnUAywsVH5fHvxWWGLfIgDMSp8jBP5UNYHxvctVfPf3H2ntj49A/XtIj50pjGHfnZR5aOO1BzK+g6dM3yCr+p/G7yG62j3XAfV9/95nvkLl2yzgAAZAAA=
+  </data>
+ </layer>
+ <objectgroup name="Spawns">
+  <object id="1" name="das4eck" x="450" y="450" width="254" height="250">
+   <properties>
+    <property name="einstern" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2" x="628" y="620" width="2"/>
+  <object id="12" name="kreislich" x="738.667" y="144" width="342.667" height="292">
+   <properties>
+    <property name="ichbineinkreis" type="bool" value="true"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="13" name="kpwasdasist" x="449.333" y="104">
+   <properties>
+    <property name="bozz" type="bool" value="true"/>
+    <property name="id" type="int" value="1337"/>
+   </properties>
+   <polygon points="0,0 76,88 220,-76 38.6667,-66.6667 -9.33333,-41.3333"/>
+  </object>
+ </objectgroup>
+</map>
