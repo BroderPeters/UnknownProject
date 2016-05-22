@@ -18,12 +18,12 @@
  </tileset>
  <layer name="Ground" width="40" height="40">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3OoQ0AIAwAsF3CD4BC8v9T7ACCJBMV9W0R0YrraaRZ4HKzChxedoEDAAAAAAD8dACPfHKTABkAAA==
+   H4sIAAAAAAAAC+3OsQkAMAwEsZ/E+4+Z1o27gBPQgfqrJPW43vbL9Lf98PMfAAAAAADcdgBs/dOjABkAAA==
   </data>
  </layer>
  <layer name="mid" width="40" height="40">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC72YwY7DIAxEOffSX7D2kCv//3erSIvkujP2GNodKdokW5sXMMYwxr5+wsVkB20s+1MfkdXznvpGPqo+qeTto+9bzwPfvo1bD3ftyMY743N8htGrYlRi0SsyMruTcfQy509l9Yzf5uvocvfVWDO+k5irdIXnXb7MZyYj7+eGLxQnrO+uxlXxdRkVnY75rH8CxfjQNz7IpdhWfN+cq1nf2t9fhQ8xrjlu4H+nsqHz3WJ9GPPQbqws2Xhf27zPnXyMGE85vZYvP44xJtgYr3con89xxroYJmgfxW3kU9f1XU7fPmqnylndeT1Hj3W1z/qhw9epP25FvmxdUNdS1S6r25kYn2qP4l+1PdlbdGII1TPdGLTxub1Z9FPx3fcrrhgDe6/IxitXfFZqVs/I/DM7ha96X+2fFh9iRP4Xm1KDIftMWU5AjMh/XBMyIftMVS1b5WG0ZmUygclLqbUzRmV/4J/N3Xf26s/kyhjZHoYx23idq8uHF9qDsu9Qvs/7V+uHuD/3Pjr7J5YvWS6Zon+0jqF2kLJ6MFvnUAywsVH5fHvxWWGLfIgDMSp8jBP5UNYHxvctVfPf3H2ntj49A/XtIj50pjGHfnZR5aOO1BzK+g6dM3yCr+p/G7yG62j3XAfV9/95nvkLl2yzgAAZAAA=
+   H4sIAAAAAAAAC72YB5PTMBBGRYdQjt6LOCB0TO+91wNCbwf//1fwMkQze2JXWjkH38ybS3zW+sWWJdnnQgjn4QJchEtwGa7AVVgCS2EZLIcVsBJWwWqYFViJhf/Vcg2uww24CbfgNtyBu7AGBrAW1sF62AAzsFHUmVVYDL97cB8ewEN4BI/hCTyFTbAZtsBW2AbbYQfsLNSVjprfjNPvGTyHF/ASXsEcvIY3sAt2wx7YC/tgPxwwjqslKvvOOB3fwgjewXv4AB/hE3yGg+HPeTgEh+EIDOEoHMtqefpiyVFr9wW+wjf4Dj9gHn7CLzgOJ+AknILTcAY6OJvViopnzVU6Wvum7aMJ/yND8bl2rS2/wYRx5pz08UuOffxKNUuJxvauRy3ZT5KfPHcywwZqfq2O0s+K5e1NV99FjeWn/caBQR6tbc1Pu4fnK23G8dzbpXMbJ389fppjusej8r+UUeg3BsXg9xvHGgfzcciq5fWL4e+5Tdasjccp8vpqjn37tJZUS17HvE9Y1zht08bzLkznmhw65fhav839vPN6X095fO04tTHLu+ZI6UKbazq+dR5a/FrWH+PkfqV5warX9/yV1u1WLD9ve63/e9tO82zR0oe09UxrH4xhumcfWSOvU/Mbf079ynKwtnsSw0Kv/LtnzSodrfpWO49fbXvt+Sn5aY5a/eTmWYNp7UspjQmao1Y/nxNK0dqXUlvL1sZhbc4qJTqcZDxr7ZJj3ue0ayy/R/HZ+6wu99UoOWr3heaXtsWw8F5NNWS0Z1Drd3h+n6zvXT/kz+eyRsvzkzVeWmNJ56yvzWPacbSU1oOleU7rA9a18frJ4+XfPW65n+ahOXr8LE+thmd+sPz+VWr3fxSfW9bWLe/iasfV/LR3Gl3wv7uojUct8Y6h1rnT3jMshl/t/Mdgr+Fa0ve9jra+n6bPtOY30d4+OwAZAAA=
   </data>
  </layer>
  <objectgroup name="Spawns">

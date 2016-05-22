@@ -63,6 +63,8 @@
     <Compile Include="Core\GraphicConfiguration.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionContainer.cs" />
     <Compile Include="DependencyInjection\Singleton.cs" />
+    <Compile Include="Engine\Camera.cs" />
+    <Compile Include="Engine\Components\MapComponent.cs" />
     <Compile Include="UnknownProjectGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
