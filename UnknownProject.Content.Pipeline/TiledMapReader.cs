@@ -52,7 +52,7 @@ namespace UnknownProject.Content.Pipeline
 
                     var tiledTile = new TiledTile();
                     tiledTile.Id = tileId;
-                    // ISSUE #24
+                    // ISSUE #25
                     tileset.Tiles.Add(tiledTile);
                 }
 

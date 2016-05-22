@@ -29,7 +29,7 @@ namespace UnknownProject.Content.Pipeline
 
             WriteLayers(writer, map);
 
-            // ISSUE #24
+            // ISSUE #25
         }
 
         private void WriteTileset(ContentWriter writer, TiledMap map)
@@ -37,7 +37,7 @@ namespace UnknownProject.Content.Pipeline
             writer.Write(map.Tilesets.Count);
             foreach (var tileset in map.Tilesets)
             {
-                // ISSUE #23 
+                // ISSUE #24
                 writer.Write(tileset.FirstGid);
                 writer.Write(tileset.TileWidth);
                 writer.Write(tileset.TileHeight);
@@ -51,7 +51,7 @@ namespace UnknownProject.Content.Pipeline
                 foreach (var tile in tileset.Tiles)
                 {
                     writer.Write(tile.Id);
-                    // ISSUE #24
+                    // ISSUE #25
                 }
             }
         }
