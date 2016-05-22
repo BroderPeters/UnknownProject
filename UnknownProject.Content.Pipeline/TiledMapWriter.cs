@@ -29,7 +29,7 @@ namespace UnknownProject.Content.Pipeline
 
             WriteLayers(writer, map);
 
-            // TODO Object groups
+            // ISSUE #24
         }
 
         private void WriteTileset(ContentWriter writer, TiledMap map)
@@ -37,18 +37,21 @@ namespace UnknownProject.Content.Pipeline
             writer.Write(map.Tilesets.Count);
             foreach (var tileset in map.Tilesets)
             {
-                // TODO writer.Write(PathHelper.RemoveExtension(tileset.Image.Source));
+                // ISSUE #23 
                 writer.Write(tileset.FirstGid);
                 writer.Write(tileset.TileWidth);
                 writer.Write(tileset.TileHeight);
                 writer.Write(tileset.Spacing);
                 writer.Write(tileset.Margin);
+                writer.Write(tileset.Tilecount);
+                writer.Write(tileset.Columns);
+
 
                 writer.Write(tileset.Tiles.Count);
                 foreach (var tile in tileset.Tiles)
                 {
                     writer.Write(tile.Id);
-                    // TODO write objectgroups
+                    // ISSUE #24
                 }
             }
         }

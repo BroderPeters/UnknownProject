@@ -32,14 +32,17 @@ namespace UnknownProject.Content.Pipeline
 
             for (var i = 0; i < tilesetCount; i++)
             {
-                // TODO var textureAssetName = reader.GetRelativeAssetPath(reader.ReadString());
-                //  var texture = reader.ContentManager.Load<Texture2D>(textureAssetName);
+                
                 var tileset = new TiledTileset();
                 tileset.FirstGid = reader.ReadInt32();
                 tileset.TileWidth = reader.ReadInt32();
                 tileset.TileHeight = reader.ReadInt32();
                 tileset.Spacing = reader.ReadInt32();
                 tileset.Margin = reader.ReadInt32();
+                tileset.Tilecount = reader.ReadInt32();
+                tileset.Columns = reader.ReadInt32();
+                // ISSUE #24 read tileset source
+
 
                 var tileSetTileCount = reader.ReadInt32();
                 for (var j = 0; j < tileSetTileCount; j++)
@@ -49,6 +52,7 @@ namespace UnknownProject.Content.Pipeline
 
                     var tiledTile = new TiledTile();
                     tiledTile.Id = tileId;
+                    // ISSUE #24
                     tileset.Tiles.Add(tiledTile);
                 }
 
