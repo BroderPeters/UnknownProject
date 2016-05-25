@@ -52,6 +52,7 @@
     <Compile Include="Components\Core\IPresenter.cs" />
     <Compile Include="Components\Core\ISetPresenter.cs" />
     <Compile Include="Components\Core\IView.cs" />
+    <Compile Include="Components\Maps\DesertMapComponent.cs" />
     <Compile Include="Components\Miscellaneous\FPSCounterComponentView.cs" />
     <Compile Include="Components\MonoGameSortingFilteringCollection.cs" />
     <Compile Include="Core\ApplicationSettings.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="DependencyInjection\Singleton.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\Components\MapComponent.cs" />
+    <Compile Include="Engine\Components\PartMapComponent.cs" />
     <Compile Include="UnknownProjectGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,7 @@ namespace UnknownProject.Engine
     [DependencyInjection.Singleton]
     public class Camera
     {
-        public Vector2 Point { get; set; }
+        public Vector2 Point { get; private set; }
         public Camera()
         {
             Point = new Vector2();

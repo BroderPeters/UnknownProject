@@ -14,100 +14,165 @@ namespace UnknownProject.Engine.Components
 {
     public class MapComponent : DrawableComponent
     {
-        private TiledMap map;
-        private Texture2D tilesetTexture;
-
-        public String MapName { get { return "desert"; } }
-
-        public Rectangle[] spritePosition;
-
-        public Texture2D[] spriteTextures;
+        public String[,] MapNames;
         private GraphicConfiguration graphic;
         private Camera cam;
+        private Func<PartMapComponent> partMapProvider;
 
-        public MapComponent(Camera cam, GraphicConfiguration graphic)
+        private PartMapComponent[,] partMaps;
+        private int[] mapHeights;
+        private int[] mapWidths;
+
+        public MapComponent(Func<PartMapComponent> partMapProvider, Camera cam, GraphicConfiguration graphic)
         {
             this.graphic = graphic;
             this.cam = cam;
+            this.partMapProvider = partMapProvider;
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            var xx = (double)cam.Point.X / map.TileWidth;
-            var yy = (double)cam.Point.Y / map.TileHeight;
+            var tileWidth = 32;
+            var tileHeight = 32;
 
-            var screenXStart = (int)Math.Floor(xx);
-            var screenYStart = (int)Math.Floor(yy);
+            var screenStartXWithOffset = (double)cam.Point.X / tileWidth;
+            var screenStartYWithOffset = (double)cam.Point.Y / tileHeight;
 
-            var offsetX = (int)((xx - screenXStart) * map.TileWidth);
-            var offsetY = (int)((yy - screenYStart) * map.TileHeight);
+            var screenStartX = (int)Math.Floor(screenStartXWithOffset);
+            var screenStartY = (int)Math.Floor(screenStartYWithOffset);
 
-            var screenWidth = Math.Ceiling((double)graphic.Width / map.TileWidth);
-            var screenHeight = Math.Ceiling((double)graphic.Height / map.TileHeight);
+            var offsetX = (int)((screenStartXWithOffset - screenStartX) * tileWidth);
+            var offsetY = (int)((screenStartYWithOffset - screenStartY) * tileHeight);
 
-            var screenWidthNeededRender = screenWidth + screenXStart + 1;
-            var screenHeightNeededRender = screenHeight + screenYStart + 1;
+            var screenTileWidth = Math.Ceiling((double)graphic.Width / tileWidth);
+            var screenTileHeight = Math.Ceiling((double)graphic.Height / tileHeight);
 
-            var finalRenderWidth = (int)(screenWidthNeededRender < map.Width ? screenWidthNeededRender : map.Width);
-            var finalRenderHeight = (int)(screenHeightNeededRender < map.Height ? screenHeightNeededRender : map.Height);
+            var screenWidthNeededRender = (int)screenTileWidth + screenStartX + 1;
+            var screenHeightNeededRender = (int)screenTileHeight + screenStartY + 1;
 
-            var width = map.TileWidth;
-            var height = map.TileHeight;
-            foreach (var layer in map.Layers)
+            int ySize = MapNames.GetLength(0);
+            int xSize = MapNames.GetLength(1);
+
+            int currentScreenX = screenStartX;
+            int currentScreenY = screenStartY;
+            int currentHeight = 0;
+            for (int y = getMapHeight(currentScreenY); y < ySize; y++)
             {
-                for (int y = screenYStart; y < finalRenderHeight; y++)
+                for (int x = getMapWidth(currentScreenX); x < xSize; x++)
                 {
-                    for (int x = screenXStart; x < finalRenderWidth; x++)
+                    var part = partMaps[y, x];
+                    var pos = part.MapPosition;
+
+                    if (pos.X < screenWidthNeededRender && pos.Y < screenHeightNeededRender)
                     {
-                        var tileId = layer.Data.Tiles[x, y];
-                        if (tileId == 0)
-                        {
-                            continue;
-                        }
-                        var xPos = ((x - screenXStart) * width) - offsetX;
-                        var yPos = ((y - screenYStart) * height) - offsetY;
-                        spriteBatch.Draw(spriteTextures[tileId], new Rectangle(xPos, yPos, width, height), spritePosition[tileId], Color.White);
+                        var finalOffsetX = (currentScreenX - screenStartX) * tileWidth - offsetX;
+                        var finalOffsetY = (currentScreenY - screenStartY) * tileHeight - offsetY;
+                        currentScreenX = part.Draw(spriteBatch, currentScreenX, screenWidthNeededRender, currentScreenY, screenHeightNeededRender, finalOffsetX, finalOffsetY);
+
                     }
+                    currentHeight = pos.Y + part.MapHeight;
+                    if (currentScreenX == screenWidthNeededRender)
+                    {
+                        break;
+                    }
+                }
+                currentScreenY = currentHeight;
+                currentScreenX = screenStartX;
+                if (currentScreenY >= screenHeightNeededRender)
+                {
+                    break;
                 }
             }
         }
 
+        private int getMapHeight(int min)
+        {
+            int lastHeight = 0;
+            for (int i = 0; i < mapHeights.Length; i++)
+            {
+                var height = mapHeights[i];
+                if (min == height)
+                {
+                    return i;
+                }
+                else if (min < height)
+                {
+                    return --i;
+                }
+                lastHeight = height;
+            }
+            return mapHeights.Length - 1;
+        }
+
+        private int getMapWidth(int min)
+        {
+            int lastWidth = 0;
+            for (int i = 0; i < mapWidths.Length; i++)
+            {
+                var height = mapWidths[i];
+                if (min == height)
+                {
+                    return i;
+                }
+                else if (min < height)
+                {
+                    return --i;
+                }
+                lastWidth = height;
+            }
+            return mapWidths.Length - 1;
+        }
+
         public override void LoadContent(ContentManager contentManager)
         {
-            map = contentManager.Load<TiledMap>(MapName);
-
-            // ISSUE #24 texture should get loaded in tileset
-            tilesetTexture = contentManager.Load<Texture2D>("tmw_desert_spacing");
-
-            var maxCount = 1;
-            foreach (var set in map.Tilesets)
+            if (MapNames == null)
             {
-                maxCount += set.Tilecount;
+                throw new ArgumentNullException("MapNames may not be null");
             }
 
-            spriteTextures = new Texture2D[maxCount];
-            spritePosition = new Rectangle[maxCount];
+            int ySize = MapNames.GetLength(0);
+            int xSize = MapNames.GetLength(1);
 
+            partMaps = new PartMapComponent[ySize, xSize];
+            mapHeights = new int[ySize];
+            mapWidths = new int[xSize];
 
-            foreach (var set in map.Tilesets)
+            var pointX = 0;
+            var pointY = 0;
+            for (int y = 0; y < ySize; y++)
             {
-                for (int i = 0; i < set.Tilecount; i++)
+                int? currentHeight = null;
+                for (int x = 0; x < xSize; x++)
                 {
-                    var rec = new Rectangle();
+                    var partMap = partMapProvider();
+                    partMap.MapName = MapNames[y, x];
+                    partMap.LoadContent(contentManager);
+                    partMap.MapPosition = new Point(pointX, pointY);
+                    partMaps[y, x] = partMap;
 
-                    var y = (int)Math.Floor(((decimal)i / (decimal)set.Columns));
-                    var x = i % set.Columns;
+                    if (y == 0)
+                    {
+                        mapWidths[x] = pointX;
+                    }
 
-                    rec.X = x * set.TileWidth + x * set.Spacing + set.Margin;
-                    rec.Y = y * set.TileHeight + y * set.Spacing + set.Margin;
+                    pointX += partMap.MapWidth;
+                    if (currentHeight == null)
+                    {
+                        currentHeight = partMap.MapHeight;
+                    }
 
-                    rec.Width = set.TileWidth;
-                    rec.Height = set.TileHeight;
-
-                    spritePosition[set.FirstGid + i] = rec;
-                    spriteTextures[set.FirstGid + i] = tilesetTexture; // ISSUE #24 they should be loaded in the tileset
+                    if (currentHeight != partMap.MapHeight)
+                    {
+                        throw new ArgumentException("The MapHeight inside a map row may not be different.");
+                    }
                 }
+                mapHeights[y] = pointY;
+                pointY += partMaps[y, 0].MapHeight;
+
+                pointX = 0;
             }
+
+
         }
 
         public override void Update(GameTime gameTime)

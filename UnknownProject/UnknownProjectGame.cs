@@ -10,6 +10,7 @@ using UnknownProject.Content.Pipeline.Tiled;
 using System.Collections.Generic;
 using UnknownProject.Engine.Components;
 using UnknownProject.Engine;
+using UnknownProject.Components.Maps;
 
 namespace UnknownProject
 {
@@ -26,12 +27,17 @@ namespace UnknownProject
         private GraphicConfiguration graficConf;
         private Camera cam;
 
-        int camSpeed = 300;
+        int camSpeed = 1000;
 
-        public UnknownProjectGame(Camera cam, GraphicConfiguration graficConf, ComponentCollection collection, FPSCounterComponent fpsComponent, MapComponent map) {
+        public UnknownProjectGame(Camera cam, GraphicConfiguration graficConf, ComponentCollection collection, FPSCounterComponent fpsComponent, DesertMapComponent map)
+        {
+
             this.collection = collection;
             this.graficConf = graficConf;
             graphics = new GraphicsDeviceManager(this);
+            this.graphics.PreferredBackBufferWidth = 1280;
+            this.graphics.PreferredBackBufferHeight = 720;
+
             IsFixedTimeStep = false;
             graphics.SynchronizeWithVerticalRetrace = false;
             Content.RootDirectory = "Content";
@@ -51,7 +57,7 @@ namespace UnknownProject
             // TODO: Add your initialization logic here
             collection.Initialize();
             base.Initialize();
-            
+
         }
 
         /// <summary>
@@ -63,16 +69,15 @@ namespace UnknownProject
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            graficConf.Width = GraphicsDevice.Viewport.Bounds.Width; 
+            graficConf.Width = GraphicsDevice.Viewport.Bounds.Width;
             graficConf.Height = GraphicsDevice.Viewport.Bounds.Height;
 
-            
 
             collection.LoadContent(Content);
             // TODO: use this.Content to load your game content here
         }
 
-      
+
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
