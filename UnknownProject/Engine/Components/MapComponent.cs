@@ -35,9 +35,9 @@ namespace UnknownProject.Engine.Components
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            
-            var tileWidth = 32;
-            var tileHeight = 32;
+
+            var tileWidth = (int)(TileWidth * cam.Zoom);
+            var tileHeight = (int)(TileHeight * cam.Zoom);
 
             var screenStartXWithOffset = (double)cam.Point.X / tileWidth;
             var screenStartYWithOffset = (double)cam.Point.Y / tileHeight;

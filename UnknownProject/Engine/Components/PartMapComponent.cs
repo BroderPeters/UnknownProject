@@ -52,7 +52,7 @@ namespace UnknownProject.Engine.Components
                             continue;
                         }
                         var xPos = ((x - startX) * tileWidth) + offsetX;
-                        var yPos = ((y - startY) * tileHeight) + tileHeight;
+                        var yPos = ((y - startY) * tileHeight) + offsetY;
                         spriteBatch.Draw(spriteTextures[tileId], new Rectangle(xPos, yPos, tileWidth, tileHeight), spritePosition[tileId], Color.White);
                     }
                 }
