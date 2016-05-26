@@ -10,6 +10,8 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\UnknownProject.Content.Pipeline\bin\Debug\UnknownProject.Content.Pipeline.dll
+/reference:..\..\UnknownProject.Content.Pipeline\bin\Release\UnknownProject.Content.Pipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -18,4 +20,21 @@
 /processor:FontDescriptionProcessor
 /processorParam:TextureFormat=Compressed
 /build:FPSFont.spritefont
+
+#begin desert.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:desert.tmx
+
+#begin tmw_desert_spacing.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:tmw_desert_spacing.png
 

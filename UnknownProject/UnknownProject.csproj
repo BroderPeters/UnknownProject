@@ -52,6 +52,7 @@
     <Compile Include="Components\Core\IPresenter.cs" />
     <Compile Include="Components\Core\ISetPresenter.cs" />
     <Compile Include="Components\Core\IView.cs" />
+    <Compile Include="Components\Maps\DesertMapComponent.cs" />
     <Compile Include="Components\Miscellaneous\FPSCounterComponentView.cs" />
     <Compile Include="Components\MonoGameSortingFilteringCollection.cs" />
     <Compile Include="Core\ApplicationSettings.cs" />
@@ -63,6 +64,9 @@
     <Compile Include="Core\GraphicConfiguration.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionContainer.cs" />
     <Compile Include="DependencyInjection\Singleton.cs" />
+    <Compile Include="Engine\Camera.cs" />
+    <Compile Include="Engine\Components\MapComponent.cs" />
+    <Compile Include="Engine\Components\PartMapComponent.cs" />
     <Compile Include="UnknownProjectGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,9 +90,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <MonoGameContentReference Include="Content\Content.mgcb">
+      <SubType>Designer</SubType>
+    </MonoGameContentReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\UnknownProject.Content.Pipeline\UnknownProject.Content.Pipeline.csproj">
+      <Project>{35b4bb85-454e-4de4-9f41-5f081b438fc0}</Project>
+      <Name>UnknownProject.Content.Pipeline</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

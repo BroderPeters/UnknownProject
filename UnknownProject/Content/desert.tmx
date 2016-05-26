@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="17">
+ <tileset firstgid="1" name="desert" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="48" columns="8">
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
+  <tile id="31">
+   <objectgroup draworder="index">
+    <object id="1" x="4.25" y="2.75" width="24" height="18.375">
+     <ellipse/>
+    </object>
+    <object id="4" x="14.375" y="21" width="12.625" height="9.5">
+     <ellipse/>
+    </object>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="49" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="48" columns="8">
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
+ </tileset>
+ <layer name="Ground" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OsQkAMAwEsZ/E+4+Z1o27gBPQgfqrJPW43vbL9Lf98PMfAAAAAADcdgBs/dOjABkAAA==
+  </data>
+ </layer>
+ <layer name="mid" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC72YB5PTMBBGRYdQjt6LOCB0TO+91wNCbwf//1fwMkQze2JXWjkH38ybS3zW+sWWJdnnQgjn4QJchEtwGa7AVVgCS2EZLIcVsBJWwWqYFViJhf/Vcg2uww24CbfgNtyBu7AGBrAW1sF62AAzsFHUmVVYDL97cB8ewEN4BI/hCTyFTbAZtsBW2AbbYQfsLNSVjprfjNPvGTyHF/ASXsEcvIY3sAt2wx7YC/tgPxwwjqslKvvOOB3fwgjewXv4AB/hE3yGg+HPeTgEh+EIDOEoHMtqefpiyVFr9wW+wjf4Dj9gHn7CLzgOJ+AknILTcAY6OJvViopnzVU6Wvum7aMJ/yND8bl2rS2/wYRx5pz08UuOffxKNUuJxvauRy3ZT5KfPHcywwZqfq2O0s+K5e1NV99FjeWn/caBQR6tbc1Pu4fnK23G8dzbpXMbJ389fppjusej8r+UUeg3BsXg9xvHGgfzcciq5fWL4e+5Tdasjccp8vpqjn37tJZUS17HvE9Y1zht08bzLkznmhw65fhav839vPN6X095fO04tTHLu+ZI6UKbazq+dR5a/FrWH+PkfqV5warX9/yV1u1WLD9ve63/e9tO82zR0oe09UxrH4xhumcfWSOvU/Mbf079ynKwtnsSw0Kv/LtnzSodrfpWO49fbXvt+Sn5aY5a/eTmWYNp7UspjQmao1Y/nxNK0dqXUlvL1sZhbc4qJTqcZDxr7ZJj3ue0ayy/R/HZ+6wu99UoOWr3heaXtsWw8F5NNWS0Z1Drd3h+n6zvXT/kz+eyRsvzkzVeWmNJ56yvzWPacbSU1oOleU7rA9a18frJ4+XfPW65n+ahOXr8LE+thmd+sPz+VWr3fxSfW9bWLe/iasfV/LR3Gl3wv7uojUct8Y6h1rnT3jMshl/t/Mdgr+Fa0ve9jra+n6bPtOY30d4+OwAZAAA=
+  </data>
+ </layer>
+ <objectgroup name="Spawns">
+  <object id="1" name="das4eck" x="450" y="450" width="254" height="250">
+   <properties>
+    <property name="einstern" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="2" x="628" y="620" width="2"/>
+  <object id="12" name="kreislich" x="738.667" y="144" width="342.667" height="292">
+   <properties>
+    <property name="ichbineinkreis" type="bool" value="true"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="13" name="kpwasdasist" x="449.333" y="104">
+   <properties>
+    <property name="bozz" type="bool" value="true"/>
+    <property name="id" type="int" value="1337"/>
+   </properties>
+   <polygon points="0,0 76,88 220,-76 38.6667,-66.6667 -9.33333,-41.3333"/>
+  </object>
+ </objectgroup>
+</map>

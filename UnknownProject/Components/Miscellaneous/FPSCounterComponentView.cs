@@ -12,6 +12,11 @@ namespace UnknownProject.Components.Miscellaneous
 {
     public class FPSCounterComponentView : ComponentView<FPSCounterComponent>, FPSCounterComponent.IFPSCounterComponentView
     {
+        public FPSCounterComponentView()
+        {
+            DrawOrder = 1;
+        }
+
         private const String FontName = "FPSFont";
         private SpriteFont spriteFont;
 

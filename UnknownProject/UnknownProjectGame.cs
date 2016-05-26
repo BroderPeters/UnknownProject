@@ -6,6 +6,11 @@ using UnknownProject.Components;
 using UnknownProject.Core;
 using System;
 using UnknownProject.Components.Core;
+using UnknownProject.Content.Pipeline.Tiled;
+using System.Collections.Generic;
+using UnknownProject.Engine.Components;
+using UnknownProject.Engine;
+using UnknownProject.Components.Maps;
 
 namespace UnknownProject
 {
@@ -20,15 +25,25 @@ namespace UnknownProject
 
         ComponentCollection collection;
         private GraphicConfiguration graficConf;
+        private Camera cam;
 
-        public UnknownProjectGame(GraphicConfiguration graficConf, ComponentCollection collection, FPSCounterComponent fpsComponent) {
+        int camSpeed = 1000;
+
+        public UnknownProjectGame(Camera cam, GraphicConfiguration graficConf, ComponentCollection collection, FPSCounterComponent fpsComponent, DesertMapComponent map)
+        {
+
             this.collection = collection;
             this.graficConf = graficConf;
             graphics = new GraphicsDeviceManager(this);
+            this.graphics.PreferredBackBufferWidth = 1280;
+            this.graphics.PreferredBackBufferHeight = 720;
+
             IsFixedTimeStep = false;
             graphics.SynchronizeWithVerticalRetrace = false;
             Content.RootDirectory = "Content";
             collection.Add(fpsComponent);
+            collection.Add(map);
+            this.cam = cam;
         }
 
         /// <summary>
@@ -42,7 +57,7 @@ namespace UnknownProject
             // TODO: Add your initialization logic here
             collection.Initialize();
             base.Initialize();
-            
+
         }
 
         /// <summary>
@@ -54,12 +69,15 @@ namespace UnknownProject
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            graficConf.Width = GraphicsDevice.Viewport.Bounds.Width; 
+            graficConf.Width = GraphicsDevice.Viewport.Bounds.Width;
             graficConf.Height = GraphicsDevice.Viewport.Bounds.Height;
+
 
             collection.LoadContent(Content);
             // TODO: use this.Content to load your game content here
         }
+
+
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -82,6 +100,16 @@ namespace UnknownProject
             //    Exit();
 
             collection.Update(gameTime);
+
+            float dis = (float)gameTime.ElapsedGameTime.TotalSeconds * camSpeed;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                cam.AddOffset(-dis, 0);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D)) cam.AddOffset(dis, 0);
+            if (Keyboard.GetState().IsKeyDown(Keys.W)) cam.AddOffset(0, -dis);
+            if (Keyboard.GetState().IsKeyDown(Keys.S)) cam.AddOffset(0, dis);
 
             base.Update(gameTime);
         }
