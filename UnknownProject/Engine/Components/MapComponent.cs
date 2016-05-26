@@ -23,6 +23,9 @@ namespace UnknownProject.Engine.Components
         private int[] mapHeights;
         private int[] mapWidths;
 
+        public int TileWidth { get; private set; }
+        public int TileHeight { get; private set; }
+
         public MapComponent(Func<PartMapComponent> partMapProvider, Camera cam, GraphicConfiguration graphic)
         {
             this.graphic = graphic;
@@ -32,6 +35,7 @@ namespace UnknownProject.Engine.Components
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            
             var tileWidth = 32;
             var tileHeight = 32;
 
@@ -67,7 +71,7 @@ namespace UnknownProject.Engine.Components
                     {
                         var finalOffsetX = (currentScreenX - screenStartX) * tileWidth - offsetX;
                         var finalOffsetY = (currentScreenY - screenStartY) * tileHeight - offsetY;
-                        currentScreenX = part.Draw(spriteBatch, currentScreenX, screenWidthNeededRender, currentScreenY, screenHeightNeededRender, finalOffsetX, finalOffsetY);
+                        currentScreenX = part.Draw(spriteBatch, currentScreenX, screenWidthNeededRender, currentScreenY, screenHeightNeededRender, finalOffsetX, finalOffsetY, tileWidth, tileHeight);
 
                     }
                     currentHeight = pos.Y + part.MapHeight;
@@ -139,6 +143,9 @@ namespace UnknownProject.Engine.Components
 
             var pointX = 0;
             var pointY = 0;
+            int currentTileWidth = -1;
+            int currentTileHeight = -1;
+
             for (int y = 0; y < ySize; y++)
             {
                 int? currentHeight = null;
@@ -165,6 +172,16 @@ namespace UnknownProject.Engine.Components
                     {
                         throw new ArgumentException("The MapHeight inside a map row may not be different.");
                     }
+
+                    if (currentTileWidth == -1)
+                    {
+                        currentTileWidth = partMap.TileWidth;
+                        currentTileHeight = partMap.TileHeight;
+                    }
+                    else if (currentTileWidth != partMap.TileWidth || currentTileHeight != partMap.TileHeight)
+                    {
+                        throw new ArgumentException("The tilewidth and height may not differ.");
+                    }
                 }
                 mapHeights[y] = pointY;
                 pointY += partMaps[y, 0].MapHeight;
@@ -172,7 +189,8 @@ namespace UnknownProject.Engine.Components
                 pointX = 0;
             }
 
-
+            TileWidth = currentTileWidth;
+            TileHeight = currentTileHeight;
         }
 
         public override void Update(GameTime gameTime)

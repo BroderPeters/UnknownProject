@@ -11,6 +11,16 @@ namespace UnknownProject.Engine
     public class Camera
     {
         public Vector2 Point { get; private set; }
+
+        private double zoom = 1;
+        public double Zoom {
+            get { return zoom; }
+            set {
+                if (value <= 0) throw new ArgumentException("Zoom may not be 0 or less than 0.");
+                zoom = value;
+            }
+        }
+
         public Camera()
         {
             Point = new Vector2();
@@ -18,7 +28,7 @@ namespace UnknownProject.Engine
 
         public void AddOffset(float x, float y)
         {
-            if(Point.X + x < 0 || Point.Y + y < 0)
+            if (Point.X + x < 0 || Point.Y + y < 0)
             {
                 return;
             }
