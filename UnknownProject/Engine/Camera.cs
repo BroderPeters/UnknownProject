@@ -10,14 +10,19 @@ namespace UnknownProject.Engine
     [DependencyInjection.Singleton]
     public class Camera
     {
+        private const double MAX_ZOOM = 10;
+        private const double MIN_ZOOM = 0.1;
+
         public Vector2 Point { get; private set; }
 
         private double zoom = 1;
         public double Zoom {
             get { return zoom; }
             set {
-                if (value <= 0) throw new ArgumentException("Zoom may not be 0 or less than 0.");
-                zoom = value;
+                if (value >= MIN_ZOOM && value <= MAX_ZOOM)
+                {
+                    zoom = value;
+                }
             }
         }
 
