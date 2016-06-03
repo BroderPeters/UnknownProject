@@ -36,20 +36,20 @@ namespace UnknownProject.Engine.Components
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
 
-            var tileWidth = (int)(TileWidth * cam.Zoom);
-            var tileHeight = (int)(TileHeight * cam.Zoom);
+            var tileWidthWithZoom = (int)(TileWidth * cam.Zoom);
+            var tileHeightWithZoom = (int)(TileHeight * cam.Zoom);
 
-            var screenStartXWithOffset = (double)cam.Point.X / tileWidth;
-            var screenStartYWithOffset = (double)cam.Point.Y / tileHeight;
+            var screenStartXWithOffset = (double)cam.Point.X / tileWidthWithZoom;
+            var screenStartYWithOffset = (double)cam.Point.Y / tileHeightWithZoom;
 
             var screenStartX = (int)Math.Floor(screenStartXWithOffset);
             var screenStartY = (int)Math.Floor(screenStartYWithOffset);
 
-            var offsetX = (int)((screenStartXWithOffset - screenStartX) * tileWidth);
-            var offsetY = (int)((screenStartYWithOffset - screenStartY) * tileHeight);
+            var offsetX = (int)((screenStartXWithOffset - screenStartX) * tileWidthWithZoom);
+            var offsetY = (int)((screenStartYWithOffset - screenStartY) * tileHeightWithZoom);
 
-            var screenTileWidth = Math.Ceiling((double)graphic.Width / tileWidth);
-            var screenTileHeight = Math.Ceiling((double)graphic.Height / tileHeight);
+            var screenTileWidth = Math.Ceiling((double)graphic.Width / tileWidthWithZoom);
+            var screenTileHeight = Math.Ceiling((double)graphic.Height / tileHeightWithZoom);
 
             var screenWidthNeededRender = (int)screenTileWidth + screenStartX + 1;
             var screenHeightNeededRender = (int)screenTileHeight + screenStartY + 1;
@@ -69,9 +69,9 @@ namespace UnknownProject.Engine.Components
 
                     if (pos.X < screenWidthNeededRender && pos.Y < screenHeightNeededRender)
                     {
-                        var finalOffsetX = (currentScreenX - screenStartX) * tileWidth - offsetX;
-                        var finalOffsetY = (currentScreenY - screenStartY) * tileHeight - offsetY;
-                        currentScreenX = part.Draw(spriteBatch, currentScreenX, screenWidthNeededRender, currentScreenY, screenHeightNeededRender, finalOffsetX, finalOffsetY, tileWidth, tileHeight);
+                        var finalOffsetX = (currentScreenX - screenStartX) * tileWidthWithZoom - offsetX;
+                        var finalOffsetY = (currentScreenY - screenStartY) * tileHeightWithZoom - offsetY;
+                        currentScreenX = part.Draw(spriteBatch, currentScreenX, screenWidthNeededRender, currentScreenY, screenHeightNeededRender, finalOffsetX, finalOffsetY, tileWidthWithZoom, tileHeightWithZoom);
 
                     }
                     currentHeight = pos.Y + part.MapHeight;

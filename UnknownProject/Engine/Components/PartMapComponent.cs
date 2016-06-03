@@ -31,7 +31,7 @@ namespace UnknownProject.Engine.Components
         public Texture2D[] spriteTextures;
 
 
-        public int Draw(SpriteBatch spriteBatch, int startX, int endX, int startY, int endY, int offsetX, int offsetY, int tileWidth, int tileHeight)
+        public int Draw(SpriteBatch spriteBatch, int startX, int endX, int startY, int endY, int offsetX, int offsetY, int tileWidthWithZoom, int tileHeightWithZoom)
         {
             var possibleRenderWidth = MapPosition.X + map.Width;
             var possibleRenderHeight = MapPosition.Y + map.Height;
@@ -50,9 +50,9 @@ namespace UnknownProject.Engine.Components
                         {
                             continue;
                         }
-                        var xPos = ((x - startX) * tileWidth) + offsetX;
-                        var yPos = ((y - startY) * tileHeight) + offsetY;
-                        spriteBatch.Draw(spriteTextures[tileId], new Rectangle(xPos, yPos, tileWidth, tileHeight), spritePosition[tileId], Color.White);
+                        var xPos = ((x - startX) * tileWidthWithZoom) + offsetX;
+                        var yPos = ((y - startY) * tileHeightWithZoom) + offsetY;
+                        spriteBatch.Draw(spriteTextures[tileId], new Rectangle(xPos, yPos, tileWidthWithZoom, tileHeightWithZoom), spritePosition[tileId], Color.White);
                     }
                 }
             }
