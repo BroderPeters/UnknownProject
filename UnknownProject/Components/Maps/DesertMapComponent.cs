@@ -13,12 +13,8 @@ namespace UnknownProject.Components.Maps
     {
         public DesertMapComponent(Func<PartMapComponent> partMapProvider, Camera cam, GraphicConfiguration graphic) : base(partMapProvider, cam, graphic)
         {
-            MapNames = new String[5, 5] {
-                { "desert", "desert", "desert", "desert", "desert" },
-                { "desert", "desert", "desert", "desert", "desert" },
-                { "desert", "desert", "desert", "desert", "desert" },
-                { "desert", "desert", "desert", "desert", "desert" },
-                { "desert", "desert", "desert", "desert", "desert" }
+            MapNames = new String[1,1] {
+                { "test/desert2" }
             };
         }
     }

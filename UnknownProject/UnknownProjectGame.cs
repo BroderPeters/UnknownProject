@@ -73,7 +73,6 @@ namespace UnknownProject
             graficConf.Width = GraphicsDevice.Viewport.Bounds.Width;
             graficConf.Height = GraphicsDevice.Viewport.Bounds.Height;
 
-
             collection.LoadContent(Content);
             // TODO: use this.Content to load your game content here
         }
@@ -115,10 +114,10 @@ namespace UnknownProject
             int diff = Mouse.GetState().ScrollWheelValue - lastScrollValue;
             if (diff < 0)
             {
-                cam.Zoom *= 1.25;
+                cam.Zoom /= 1.25;
             } else if(diff > 0)
             {
-                cam.Zoom /= 1.25;
+                cam.Zoom *= 1.25;
             }
             lastScrollValue = Mouse.GetState().ScrollWheelValue;
             base.Update(gameTime);

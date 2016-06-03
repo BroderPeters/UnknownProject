@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +36,10 @@ namespace UnknownProject.Content.Pipeline
             {
                 
                 var tileset = new TiledTileset();
+                tileset.Image.Source = reader.ReadString();
+                tileset.Image.Width = reader.ReadInt32();
+                tileset.Image.Height = reader.ReadInt32();
+                tileset.Image.SpriteTexture = reader.ContentManager.Load<Texture2D>(tileset.Image.Source);
                 tileset.FirstGid = reader.ReadInt32();
                 tileset.TileWidth = reader.ReadInt32();
                 tileset.TileHeight = reader.ReadInt32();
@@ -41,8 +47,6 @@ namespace UnknownProject.Content.Pipeline
                 tileset.Margin = reader.ReadInt32();
                 tileset.Tilecount = reader.ReadInt32();
                 tileset.Columns = reader.ReadInt32();
-                // ISSUE #24 read tileset source
-
 
                 var tileSetTileCount = reader.ReadInt32();
                 for (var j = 0; j < tileSetTileCount; j++)

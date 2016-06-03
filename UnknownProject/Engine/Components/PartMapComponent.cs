@@ -17,7 +17,6 @@ namespace UnknownProject.Engine.Components
     {
         private const uint NoTileId = 0;
         private TiledMap map;
-        private Texture2D tilesetTexture;
 
         public String MapName { get; set; }
         public int MapWidth { get; private set; }
@@ -69,9 +68,6 @@ namespace UnknownProject.Engine.Components
 
             map = contentManager.Load<TiledMap>(MapName);
 
-            // ISSUE #24 texture should get loaded in tileset
-            tilesetTexture = contentManager.Load<Texture2D>("tmw_desert_spacing");
-
             var maxCount = 1;
             foreach (var set in map.Tilesets)
             {
@@ -98,7 +94,7 @@ namespace UnknownProject.Engine.Components
                     rec.Height = set.TileHeight;
 
                     spritePosition[set.FirstGid + i] = rec;
-                    spriteTextures[set.FirstGid + i] = tilesetTexture; // ISSUE #24 they should be loaded in the tileset
+                    spriteTextures[set.FirstGid + i] = set.Image.SpriteTexture;
                 }
             }
 

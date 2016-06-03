@@ -91,7 +91,6 @@ namespace UnknownProject.Engine.Components
 
         private int getMapHeight(int min)
         {
-            int lastHeight = 0;
             for (int i = 0; i < mapHeights.Length; i++)
             {
                 var height = mapHeights[i];
@@ -101,16 +100,15 @@ namespace UnknownProject.Engine.Components
                 }
                 else if (min < height)
                 {
+                    if (i == 0) return 0;
                     return --i;
                 }
-                lastHeight = height;
             }
             return mapHeights.Length - 1;
         }
 
         private int getMapWidth(int min)
         {
-            int lastWidth = 0;
             for (int i = 0; i < mapWidths.Length; i++)
             {
                 var height = mapWidths[i];
@@ -120,9 +118,9 @@ namespace UnknownProject.Engine.Components
                 }
                 else if (min < height)
                 {
+                    if (i == 0) return 0;
                     return --i;
                 }
-                lastWidth = height;
             }
             return mapWidths.Length - 1;
         }
