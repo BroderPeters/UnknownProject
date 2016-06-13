@@ -15,12 +15,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin FPSFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:TextureFormat=Compressed
-/build:FPSFont.spritefont
-
 #begin desert.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
@@ -37,4 +31,7 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:tmw_desert_spacing.png
+
+#begin FPSFont.xnb
+/copy:FPSFont.xnb
 
