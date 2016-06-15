@@ -19,7 +19,7 @@ script:
   - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./UnknownProject.Tests/bin/Release/UnknownProject.Tests.dll
 after_script:
   - (cd UnknownProject/bin/Release && zip -r "../../../build_$TRAVIS_JOB_NUMBER.zip" *)
-  - '[ -f ~/.dropbox_uploader ] && ./dropbox_uploader.sh upload "build_$TRAVIS_JOB_NUMBER.zip" artifacts/'
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ -f ~/.dropbox_uploader ] && ./dropbox_uploader.sh upload "build_$TRAVIS_JOB_NUMBER.zip" artifacts/'
 branches:
   only:
     - master
