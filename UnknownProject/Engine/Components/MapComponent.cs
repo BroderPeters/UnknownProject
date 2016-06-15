@@ -23,6 +23,9 @@ namespace UnknownProject.Engine.Components
         private int[] mapHeights;
         private int[] mapWidths;
 
+        public int TileWidth { get; private set; }
+        public int TileHeight { get; private set; }
+
         public MapComponent(Func<PartMapComponent> partMapProvider, Camera cam, GraphicConfiguration graphic)
         {
             this.graphic = graphic;
@@ -32,20 +35,21 @@ namespace UnknownProject.Engine.Components
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            var tileWidth = 32;
-            var tileHeight = 32;
 
-            var screenStartXWithOffset = (double)cam.Point.X / tileWidth;
-            var screenStartYWithOffset = (double)cam.Point.Y / tileHeight;
+            var tileWidthWithZoom = (int)(TileWidth * cam.Zoom);
+            var tileHeightWithZoom = (int)(TileHeight * cam.Zoom);
+
+            var screenStartXWithOffset = (double)cam.Point.X / tileWidthWithZoom;
+            var screenStartYWithOffset = (double)cam.Point.Y / tileHeightWithZoom;
 
             var screenStartX = (int)Math.Floor(screenStartXWithOffset);
             var screenStartY = (int)Math.Floor(screenStartYWithOffset);
 
-            var offsetX = (int)((screenStartXWithOffset - screenStartX) * tileWidth);
-            var offsetY = (int)((screenStartYWithOffset - screenStartY) * tileHeight);
+            var offsetX = (int)((screenStartXWithOffset - screenStartX) * tileWidthWithZoom);
+            var offsetY = (int)((screenStartYWithOffset - screenStartY) * tileHeightWithZoom);
 
-            var screenTileWidth = Math.Ceiling((double)graphic.Width / tileWidth);
-            var screenTileHeight = Math.Ceiling((double)graphic.Height / tileHeight);
+            var screenTileWidth = Math.Ceiling((double)graphic.Width / tileWidthWithZoom);
+            var screenTileHeight = Math.Ceiling((double)graphic.Height / tileHeightWithZoom);
 
             var screenWidthNeededRender = (int)screenTileWidth + screenStartX + 1;
             var screenHeightNeededRender = (int)screenTileHeight + screenStartY + 1;
@@ -65,9 +69,9 @@ namespace UnknownProject.Engine.Components
 
                     if (pos.X < screenWidthNeededRender && pos.Y < screenHeightNeededRender)
                     {
-                        var finalOffsetX = (currentScreenX - screenStartX) * tileWidth - offsetX;
-                        var finalOffsetY = (currentScreenY - screenStartY) * tileHeight - offsetY;
-                        currentScreenX = part.Draw(spriteBatch, currentScreenX, screenWidthNeededRender, currentScreenY, screenHeightNeededRender, finalOffsetX, finalOffsetY);
+                        var finalOffsetX = (currentScreenX - screenStartX) * tileWidthWithZoom - offsetX;
+                        var finalOffsetY = (currentScreenY - screenStartY) * tileHeightWithZoom - offsetY;
+                        currentScreenX = part.Draw(spriteBatch, currentScreenX, screenWidthNeededRender, currentScreenY, screenHeightNeededRender, finalOffsetX, finalOffsetY, tileWidthWithZoom, tileHeightWithZoom);
 
                     }
                     currentHeight = pos.Y + part.MapHeight;
@@ -87,7 +91,6 @@ namespace UnknownProject.Engine.Components
 
         private int getMapHeight(int min)
         {
-            int lastHeight = 0;
             for (int i = 0; i < mapHeights.Length; i++)
             {
                 var height = mapHeights[i];
@@ -97,16 +100,15 @@ namespace UnknownProject.Engine.Components
                 }
                 else if (min < height)
                 {
+                    if (i == 0) return 0;
                     return --i;
                 }
-                lastHeight = height;
             }
             return mapHeights.Length - 1;
         }
 
         private int getMapWidth(int min)
         {
-            int lastWidth = 0;
             for (int i = 0; i < mapWidths.Length; i++)
             {
                 var height = mapWidths[i];
@@ -116,9 +118,9 @@ namespace UnknownProject.Engine.Components
                 }
                 else if (min < height)
                 {
+                    if (i == 0) return 0;
                     return --i;
                 }
-                lastWidth = height;
             }
             return mapWidths.Length - 1;
         }
@@ -139,6 +141,9 @@ namespace UnknownProject.Engine.Components
 
             var pointX = 0;
             var pointY = 0;
+            int currentTileWidth = -1;
+            int currentTileHeight = -1;
+
             for (int y = 0; y < ySize; y++)
             {
                 int? currentHeight = null;
@@ -165,6 +170,16 @@ namespace UnknownProject.Engine.Components
                     {
                         throw new ArgumentException("The MapHeight inside a map row may not be different.");
                     }
+
+                    if (currentTileWidth == -1)
+                    {
+                        currentTileWidth = partMap.TileWidth;
+                        currentTileHeight = partMap.TileHeight;
+                    }
+                    else if (currentTileWidth != partMap.TileWidth || currentTileHeight != partMap.TileHeight)
+                    {
+                        throw new ArgumentException("The tilewidth and height may not differ.");
+                    }
                 }
                 mapHeights[y] = pointY;
                 pointY += partMaps[y, 0].MapHeight;
@@ -172,7 +187,8 @@ namespace UnknownProject.Engine.Components
                 pointX = 0;
             }
 
-
+            TileWidth = currentTileWidth;
+            TileHeight = currentTileHeight;
         }
 
         public override void Update(GameTime gameTime)

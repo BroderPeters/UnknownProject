@@ -12,6 +12,7 @@ namespace UnknownProject.Content.Pipeline.Tiled
         public TiledTileset()
         {
             Tiles = new List<TiledTile>();
+            Image = new TiledImage();
         }
 
         [XmlAttribute(AttributeName = "firstgid")]

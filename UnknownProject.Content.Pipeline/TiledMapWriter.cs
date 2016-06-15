@@ -38,6 +38,9 @@ namespace UnknownProject.Content.Pipeline
             foreach (var tileset in map.Tilesets)
             {
                 // ISSUE #24
+                writer.Write(tileset.Image.Source);
+                writer.Write(tileset.Image.Width);
+                writer.Write(tileset.Image.Height);
                 writer.Write(tileset.FirstGid);
                 writer.Write(tileset.TileWidth);
                 writer.Write(tileset.TileHeight);

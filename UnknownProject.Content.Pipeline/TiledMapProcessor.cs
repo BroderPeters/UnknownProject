@@ -39,9 +39,9 @@ namespace UnknownProject.Content.Pipeline
             using (var stream = OpenStream(decodedData, data.Compression))
             using (var reader = new BinaryReader(stream))
             {
-                for (var y = 0; y < width; y++)
+                for (var y = 0; y < height; y++)
                 {
-                    for (var x = 0; x < height; x++)
+                    for (var x = 0; x < width; x++)
                     {
                         tileList[x, y] = reader.ReadUInt32();
                     }

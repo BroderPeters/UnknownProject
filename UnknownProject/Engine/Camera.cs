@@ -10,7 +10,22 @@ namespace UnknownProject.Engine
     [DependencyInjection.Singleton]
     public class Camera
     {
+        private const double MAX_ZOOM = 10;
+        private const double MIN_ZOOM = 0.1;
+
         public Vector2 Point { get; private set; }
+
+        private double zoom = 1;
+        public double Zoom {
+            get { return zoom; }
+            set {
+                if (value >= MIN_ZOOM && value <= MAX_ZOOM)
+                {
+                    zoom = value;
+                }
+            }
+        }
+
         public Camera()
         {
             Point = new Vector2();
@@ -18,7 +33,7 @@ namespace UnknownProject.Engine
 
         public void AddOffset(float x, float y)
         {
-            if(Point.X + x < 0 || Point.Y + y < 0)
+            if (Point.X + x < 0 || Point.Y + y < 0)
             {
                 return;
             }
