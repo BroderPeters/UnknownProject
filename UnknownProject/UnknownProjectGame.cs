@@ -28,6 +28,7 @@ namespace UnknownProject
         private Camera cam;
 
         int camSpeed = 1000;
+        int lastScrollValue = 0;
 
         public UnknownProjectGame(Camera cam, GraphicConfiguration graficConf, ComponentCollection collection, FPSCounterComponent fpsComponent, DesertMapComponent map)
         {
@@ -72,7 +73,6 @@ namespace UnknownProject
             graficConf.Width = GraphicsDevice.Viewport.Bounds.Width;
             graficConf.Height = GraphicsDevice.Viewport.Bounds.Height;
 
-
             collection.LoadContent(Content);
             // TODO: use this.Content to load your game content here
         }
@@ -111,6 +111,15 @@ namespace UnknownProject
             if (Keyboard.GetState().IsKeyDown(Keys.W)) cam.AddOffset(0, -dis);
             if (Keyboard.GetState().IsKeyDown(Keys.S)) cam.AddOffset(0, dis);
 
+            int diff = Mouse.GetState().ScrollWheelValue - lastScrollValue;
+            if (diff < 0)
+            {
+                cam.Zoom /= 1.25;
+            } else if(diff > 0)
+            {
+                cam.Zoom *= 1.25;
+            }
+            lastScrollValue = Mouse.GetState().ScrollWheelValue;
             base.Update(gameTime);
         }
 

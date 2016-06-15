@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,8 @@ namespace UnknownProject.Content.Pipeline.Tiled
 
         [XmlAttribute(AttributeName = "height")]
         public int Height { get; set; }
+
+        [XmlIgnore]
+        public Texture2D SpriteTexture { get; set; }
     }
 }
