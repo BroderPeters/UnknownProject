@@ -9,6 +9,7 @@ using UnknownProject.Core;
 using FakeItEasy;
 using Microsoft.Xna.Framework;
 using MonoGame.Framework;
+using UnknownProject.Core.Configurations;
 
 namespace UnknownProject.Components.Miscellaneous.Tests
 {
