@@ -18,7 +18,8 @@ namespace UnknownProject
         [STAThread]
         static void Main()
         {
-            Log.Info("Initialise DependencyInjection");
+            AppDomain.CurrentDomain.UnhandledException += LogUnhandledException;
+            Log.Debug("Initialise DependencyInjection");
             var container = DependencyInjectionContainer.Get();
             using (container.BeginScope())
             {
@@ -26,6 +27,11 @@ namespace UnknownProject
                 Log.Debug("Starting UnknownProjectGame");
                 game.Run();
             }
+        }
+
+        private static void LogUnhandledException(Object sender, UnhandledExceptionEventArgs e)
+        {
+            Log.Fatal((Exception)e.ExceptionObject);
         }
     }
 }
