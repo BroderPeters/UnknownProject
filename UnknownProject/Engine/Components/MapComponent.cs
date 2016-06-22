@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using UnknownProject.Components.Core;
 using UnknownProject.Content.Pipeline.Tiled;
 using UnknownProject.Core;
+using UnknownProject.Core.Configurations;
 
 namespace UnknownProject.Engine.Components
 {

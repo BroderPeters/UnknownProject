@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using UnknownProject.Core;
 using UnknownProject.Components.Core;
+using UnknownProject.Core.Configurations;
 
 namespace UnknownProject.Components.Miscellaneous
 {

@@ -55,13 +55,13 @@
     <Compile Include="Components\Maps\DesertMapComponent.cs" />
     <Compile Include="Components\Miscellaneous\FPSCounterComponentView.cs" />
     <Compile Include="Components\MonoGameSortingFilteringCollection.cs" />
-    <Compile Include="Core\ApplicationSettings.cs" />
+    <Compile Include="Core\Configurations\ApplicationSettings.cs" />
     <Compile Include="Components\Core\Component.cs" />
     <Compile Include="Components\Core\ComponentCollection.cs" />
     <Compile Include="Components\Core\ComponentPresenter.cs" />
     <Compile Include="Components\Core\IDrawable.cs" />
     <Compile Include="Components\Miscellaneous\FPSCounterComponent.cs" />
-    <Compile Include="Core\GraphicConfiguration.cs" />
+    <Compile Include="Core\Configurations\GraphicConfiguration.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionContainer.cs" />
     <Compile Include="DependencyInjection\Singleton.cs" />
     <Compile Include="Engine\Camera.cs" />
@@ -82,6 +82,10 @@
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.5.1.1679\lib\net40\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpConfig, Version=1.5.5.0, Culture=neutral, PublicKeyToken=c1deedac91bd7724, processorArchitecture=MSIL">
+      <HintPath>..\packages\sharpconfig.1.5.5\lib\net20\SharpConfig.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

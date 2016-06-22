@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnknownProject
+namespace UnknownProject.Core.Configurations
 {
     [DependencyInjection.Singleton]
     public class ApplicationSettings
