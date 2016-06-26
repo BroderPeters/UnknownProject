@@ -52,7 +52,7 @@
 /processorParam:TextureFormat=Color
 /build:test/tmw_desert_spacing.png
 
-#begin particles/pixel.dds
+#begin particles/pixel.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -62,5 +62,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:particles/pixel.dds
+/build:particles/pixel.png
 
