@@ -14,7 +14,7 @@ namespace UnknownProject.Components.Maps
     {
         public DesertMapComponent(Func<PartMapComponent> partMapProvider, Camera cam, GraphicConfiguration graphic) : base(partMapProvider, cam, graphic)
         {
-            MapNames = new String[1,1] {
+            MapNames = new[,] {
                 { "test/desert2" }
             };
         }

@@ -31,7 +31,7 @@ namespace UnknownProject
         int camSpeed = 1000;
         int lastScrollValue = 0;
 
-        public UnknownProjectGame(Camera cam, GraphicConfiguration graficConf, ComponentCollection collection, FPSCounterComponent fpsComponent, DesertMapComponent map)
+        public UnknownProjectGame(Camera cam, GraphicConfiguration graficConf, ComponentCollection collection, FPSCounterComponent fpsComponent, DesertMapComponent map, ParticleEffectComponent pec)
         {
 
             this.collection = collection;
@@ -45,6 +45,7 @@ namespace UnknownProject
             Content.RootDirectory = "Content";
             collection.Add(fpsComponent);
             collection.Add(map);
+            collection.Add(pec);
             this.cam = cam;
         }
 
@@ -132,7 +133,7 @@ namespace UnknownProject
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
 
             collection.Draw(spriteBatch, gameTime);
 

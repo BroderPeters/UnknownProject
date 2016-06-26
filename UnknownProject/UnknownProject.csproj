@@ -66,7 +66,12 @@
     <Compile Include="DependencyInjection\Singleton.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\Components\MapComponent.cs" />
+    <Compile Include="Engine\Components\ParticleEffectComponent.cs" />
     <Compile Include="Engine\Components\PartMapComponent.cs" />
+    <Compile Include="Engine\Particle\MinMaxFloat.cs" />
+    <Compile Include="Engine\Particle\Particle.cs" />
+    <Compile Include="Engine\Particle\ParticleEffect.cs" />
+    <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="UnknownProjectGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
