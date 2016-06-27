@@ -9,6 +9,9 @@ namespace UnknownProject.Engine.Particle
 {
     public class ParticleEffect
     {
+
+
+
         private Random random;
         private List<Particle> particles;
         private Texture2D[] textures;
@@ -24,8 +27,30 @@ namespace UnknownProject.Engine.Particle
         private MinMaxFloat angularVelocity;
         private MinMaxFloat startAngle;
         private MinMaxFloat newEveryCount;
+        private MinMaxFloat endOpacity;
+        private MinMaxFloat startOpacity;
+        private double opacityChangeMode;
+        private float sizeScale;
+        private MinMaxFloat sizeVelocity;
+        private DrawOrder drawOrder;
 
-        public ParticleEffect(Texture2D[] textures, MinMaxFloat offsetX, MinMaxFloat offsetY, MinMaxFloat size, MinMaxFloat timeToLife, TimeSpan newEvery, MinMaxFloat newEveryCount, Camera cam, MinMaxFloat startAngle, MinMaxFloat angularVelocity, bool randomColors = true)
+        public ParticleEffect(Texture2D[] textures,
+            MinMaxFloat offsetX,
+            MinMaxFloat offsetY,
+            MinMaxFloat size,
+            MinMaxFloat sizeVelocity,
+            MinMaxFloat timeToLife,
+            TimeSpan newEvery,
+            MinMaxFloat newEveryCount,
+            Camera cam,
+            MinMaxFloat startAngle,
+            MinMaxFloat angularVelocity,
+            MinMaxFloat startOpacity,
+            MinMaxFloat endOpacity,
+            double opacityChangeMode,
+            float sizeScale = 1,
+            Color[] colors = null,
+            DrawOrder drawOrder = DrawOrder.NewToOld)
         {
             this.textures = textures;
             this.particles = new List<Particle>();
@@ -33,19 +58,20 @@ namespace UnknownProject.Engine.Particle
             this.offsetY = offsetY;
             this.timeToLife = timeToLife;
             this.size = size;
+            this.sizeScale = sizeScale;
             this.newEvery = newEvery;
             this.cam = cam;
-            this.randomColors = randomColors;
+            this.colors = colors;
             this.startAngle = startAngle;
+            this.sizeVelocity = sizeVelocity;
             this.angularVelocity = angularVelocity;
             this.newEveryCount = newEveryCount;
+            this.endOpacity = endOpacity;
+            this.startOpacity = startOpacity;
+            this.opacityChangeMode = opacityChangeMode;
+            this.drawOrder = drawOrder;
+            this.randomColors = colors == null;
             this.random = new Random();
-        }
-
-        public ParticleEffect(Texture2D[] textures, Color[] colors, MinMaxFloat offsetX, MinMaxFloat offsetY, MinMaxFloat size, MinMaxFloat timeToLife, TimeSpan newEvery, MinMaxFloat newEveryCount, Camera cam, MinMaxFloat startAngle, MinMaxFloat angularVelocity) :
-            this(textures, offsetX, offsetY, size, timeToLife, newEvery, newEveryCount, cam, startAngle, angularVelocity, false)
-        {
-            this.colors = colors;
         }
 
         public void Update(GameTime gameTime, Point emitterLocation)
@@ -88,10 +114,13 @@ namespace UnknownProject.Engine.Particle
             var angle = startAngle.RandBetween(random);
             var angularVelocity = this.angularVelocity.RandBetween(random);
             var color = GetColor();
-            var size = this.size.RandBetween(random);
+            var size = this.size.RandBetween(random) * sizeScale;
             var ttl = TimeSpan.FromSeconds(timeToLife.RandBetween(random));
+            var startOpacity = this.startOpacity.RandBetween(random);
+            var endOpacity = this.endOpacity.RandBetween(random);
+            var sizeVelocity = this.sizeVelocity.RandBetween(random);
 
-            return new Particle(texture, emitterLocation, velocity, angle, angularVelocity, color, size, ttl, cam);
+            return new Particle(texture, emitterLocation, velocity, angle, angularVelocity, color, size, sizeVelocity, ttl, startOpacity, endOpacity, opacityChangeMode, cam);
         }
 
         private Color GetColor()
@@ -112,10 +141,21 @@ namespace UnknownProject.Engine.Particle
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (var index = 0; index < particles.Count; index++)
+            if (drawOrder == DrawOrder.NewToOld)
             {
-                particles[index].Draw(spriteBatch);
+                for (var index = 0; index < particles.Count; index++)
+                {
+                    particles[index].Draw(spriteBatch);
+                }
             }
+            else
+            {
+                for (var index = particles.Count - 1; index >= 0; index--)
+                {
+                    particles[index].Draw(spriteBatch);
+                }
+            }
+
         }
     }
 }

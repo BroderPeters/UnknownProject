@@ -68,7 +68,9 @@
     <Compile Include="Engine\Components\MapComponent.cs" />
     <Compile Include="Engine\Components\ParticleEffectComponent.cs" />
     <Compile Include="Engine\Components\PartMapComponent.cs" />
+    <Compile Include="Engine\Particle\DrawOrder.cs" />
     <Compile Include="Engine\Particle\MinMaxFloat.cs" />
+    <Compile Include="Engine\Particle\OpacityChangeMode.cs" />
     <Compile Include="Engine\Particle\Particle.cs" />
     <Compile Include="Engine\Particle\ParticleEffect.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
