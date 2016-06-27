@@ -1,6 +1,9 @@
 ﻿using log4net;
 using log4net.Config;
 using System;
+using UnknownProject.Character;
+using UnknownProject.Character.jobs;
+using UnknownProject.Character.Species;
 using UnknownProject.DependencyInjection;
 
 namespace UnknownProject

@@ -46,6 +46,10 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Character\jobs\Warrior.cs" />
+    <Compile Include="Character\Jobs.cs" />
+    <Compile Include="Character\Specieses.cs" />
+    <Compile Include="Character\Specieses\Human.cs" />
     <Compile Include="Components\Core\ComponentView.cs" />
     <Compile Include="Components\Core\DrawableComponent.cs" />
     <Compile Include="Components\Core\IHasDrawable.cs" />
@@ -116,6 +120,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
